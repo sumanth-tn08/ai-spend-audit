@@ -1,0 +1,6 @@
+{
+  "name": "AI Spend Audit",
+  "description": "An end-to-end cloud spend auditor that evaluates AI tool subscriptions, identifies seat leakage, and suggests concrete plan optimizations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "AuditResult": {
+      "title": "AuditResult",
+      "description": "Result of a completed AI subscription spend audit",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique alphanumeric ID" },
+        "totalCurrentSpend": { "type": "number", "description": "Total monthly billed across tools" },
+        "totalSavingsMonthly": { "type": "number", "description": "Total monthly potential savings" },
+        "totalSavingsAnnual": { "type": "number", "description": "Total annual potential savings" },
+        "personalizedSummary": { "type": "string", "description": "AI or template generated text summary" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation" }
+      },
+      "required": ["id", "totalCurrentSpend", "totalSavingsMonthly", "totalSavingsAnnual", "personalizedSummary", "createdAt"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "Captured user lead for consultation and notifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique lead registration ID" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "companyName": { "type": "string", "description": "User organization or company name" },
+        "role": { "type": "string", "description": "User job role/title" },
+        "teamSize": { "type": "number", "description": "Total team size" },
+        "auditId": { "type": "string", "description": "Reference ID to the audit record" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of registration" }
+      },
+      "required": ["id", "email", "auditId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/audits/{auditId}": {
+      "schema": "AuditResult",
+      "description": "Global list of completed audits"
+    },
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Captured enterprise/consultation leads"
+    }
+  }
+}

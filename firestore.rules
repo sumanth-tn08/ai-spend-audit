@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Catch-all deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Audits Collection
+    match /audits/{auditId} {
+      allow get: if isValidId(auditId);
+      allow create: if isValidId(auditId)
+        && request.resource.data.id == auditId
+        && request.resource.data.totalCurrentSpend is number
+        && request.resource.data.totalSavingsMonthly is number
+        && request.resource.data.totalSavingsAnnual is number
+        && request.resource.data.personalizedSummary is string
+        && request.resource.data.personalizedSummary.size() <= 10000;
+      allow update, delete: if false; // immutable audits
+    }
+
+    // Leads Collection
+    match /leads/{leadId} {
+      allow create: if isValidId(leadId)
+        && request.resource.data.id == leadId
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 320
+        && request.resource.data.auditId is string
+        && request.resource.data.auditId.size() <= 128;
+      allow read, update, delete: if false; // completely sealed leads
+    }
+  }
+}
