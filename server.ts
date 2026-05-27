@@ -11,7 +11,7 @@ import { AuditInput, LeadInput } from "./src/types.js";
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // Vite instance holder for HTML transformation in development
 let viteInstance: any = null;
