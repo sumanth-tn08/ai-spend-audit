@@ -5,8 +5,8 @@ SpendOptic is a modern, no-login full-stack web utility designed to audit corpor
 ---
 
 ## Live Links & Quick References
-- **Dynamic Sandbox Preview URL**: [https://ais-dev-2uo5tbbqfysq75qpnfsp7z-114107231957.asia-southeast1.run.app/](https://ais-dev-2uo5tbbqfysq75qpnfsp7z-114107231957.asia-southeast1.run.app/)
-- **Live Shared URL**: [https://ais-pre-2uo5tbbqfysq75qpnfsp7z-114107231957.asia-southeast1.run.app/](https://ais-pre-2uo5tbbqfysq75qpnfsp7z-114107231957.asia-southeast1.run.app/)
+- **Live Production Web App**: [https://spendoptic-audit.onrender.com/](https://spendoptic-audit.onrender.com/)
+- **GitHub Repository**: [https://github.com/sumanth-tn08/ai-spend-audit](https://github.com/sumanth-tn08/ai-spend-audit)
 
 ---
 
